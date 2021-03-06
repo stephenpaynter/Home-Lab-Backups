@@ -1,12 +1,12 @@
 !Command: show running-config
-!Time: Wed Feb 24 10:52:44 2021
+!Time: Sat Mar  6 21:39:21 2021
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
 license grace-period
 
-hostname r7
-vdc r7 id 1
+hostname R7
+vdc R7 id 1
   limit-resource module-type m1 m1xl m2xl f2e 
   allocate interface Ethernet2/1-48
   allocate interface Ethernet3/1-48
