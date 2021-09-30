@@ -1,7 +1,9 @@
 Building configuration...
 
   
-Current configuration : 3823 bytes
+Current configuration : 3931 bytes
+!
+! Last configuration change at 02:50:11 UTC Wed Sep 22 2021 by cisco
 !
 version 15.9
 service timestamps debug datetime msec
@@ -14,6 +16,7 @@ boot-start-marker
 boot-end-marker
 !
 !
+no logging console
 enable secret 9 $9$4a.OSN1rlz3KWP$83q0h5jxn3K8qBztQHPQUXSdlgVctxsWVXzicTMF64I
 !
 aaa new-model
@@ -181,6 +184,7 @@ banner login ^C
 **************************************************************************^C
 !
 line con 0
+ exec-timeout 0 0
 line aux 0
 line vty 0 4
  privilege level 15

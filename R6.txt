@@ -1,6 +1,8 @@
 Building configuration...
 
-Current configuration : 3957 bytes
+Current configuration : 4228 bytes
+!
+! Last configuration change at 22:34:18 UTC Thu Sep 16 2021 by cisco
 !
 version 15.9
 service timestamps debug datetime msec
@@ -38,6 +40,10 @@ mmi snmp-timeout 180
 !
 !
 !
+!
+ip vrf Test
+ description test_vrf
+ rd 77:77
 !
 !
 !
@@ -115,8 +121,8 @@ interface GigabitEthernet0/6
  media-type rj45
 !
 interface GigabitEthernet0/7
- no ip address
- shutdown
+ ip vrf forwarding Test
+ ip address 217.217.217.1 255.255.255.0
  duplex auto
  speed auto
  media-type rj45
@@ -129,6 +135,11 @@ router ospf 1
  network 64.1.1.0 0.0.0.255 area 0
  network 65.1.1.0 0.0.0.255 area 1
  network 67.1.1.0 0.0.0.255 area 0
+!
+router bgp 65000
+ bgp log-neighbor-changes
+ neighbor 64.1.1.4 remote-as 65000
+ neighbor 67.1.1.7 remote-as 65000
 !
 ip forward-protocol nd
 !

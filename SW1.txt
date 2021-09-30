@@ -1,9 +1,8 @@
 Building configuration...
 
-Current configuration : 3359 bytes
+Current configuration : 3509 bytes
 !
-! Last configuration change at 12:51:53 GMT Sun Feb 21 2021
-! NVRAM config last updated at 18:48:32 GMT Sat Mar 6 2021 by cisco
+! Last configuration change at 12:53:27 GMT Sat Sep 11 2021
 !
 version 15.2
 service timestamps debug datetime msec
@@ -71,20 +70,31 @@ interface GigabitEthernet0/0
  no cdp enable
 !
 interface GigabitEthernet0/1
+ switchport access vlan 3
+ switchport mode access
  negotiation auto
  no cdp enable
 !
 interface GigabitEthernet0/2
+ switchport access vlan 4
+ switchport mode access
  negotiation auto
  no cdp enable
 !
 interface GigabitEthernet0/3
+ switchport access vlan 5
+ switchport mode access
  negotiation auto
  no cdp enable
 !
 interface Vlan1
  description MGMT
  ip address 192.168.1.175 255.255.255.0
+!
+interface Vlan3
+ description test_vlan_3
+ no ip address
+ shutdown
 !
 ip forward-protocol nd
 !
