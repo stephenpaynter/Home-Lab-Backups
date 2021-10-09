@@ -1,5 +1,5 @@
 !Command: show running-config
-!Time: Fri Oct  8 06:09:05 2021
+!Time: Sat Oct  9 06:09:42 2021
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
@@ -23,6 +23,7 @@ feature privilege
 feature ospf
 feature bgp
 feature pim
+feature interface-vlan
 feature nxapi
 
 username admin password 5 $5$35f5FZpK$NMmS8ea/z/WiBxlH46cfLYAEbOzPAJyXiqJ2AIjQuX2  role network-admin
@@ -64,6 +65,16 @@ vrf context management
 interface mgmt0
   vrf member management
   ip address 192.168.1.110/24
+
+interface Vlan1
+
+interface Vlan2
+  no shutdown
+  ip address 200.2.2.2/24
+
+interface Vlan3
+  no shutdown
+  ip address 200.3.3.3/24
 
 interface Ethernet2/1
   no switchport
@@ -785,8 +796,7 @@ interface Ethernet4/47
 
 interface Ethernet4/48
   shutdown
-  no switchport
-  mac-address 0000.0000.002f
+  switchport
 
 interface loopback0
   ip address 7.7.7.7/32
@@ -803,6 +813,7 @@ router ospf 1
   router-id 7.7.7.7
   redistribute direct route-map loop
   area 0.0.0.0 range 67.1.1.0/24
+  summary-address 44.44.44.0/24 tag 45
 router bgp 65000
   address-family ipv4 unicast
   neighbor 67.1.1.6 remote-as 65000
